@@ -36,7 +36,7 @@ To reproduce the results of the paper, first generate the corresponding dataset 
 python -m data.gen_data
 ```
 
-Note that you can adjust the hyperparameters in the `data/gen_data.py` file to modify the number of individuals, number of clusters to sample from, the length of the feature vector, and the proportion of observed entries.
+Note that you can adjust the hyperparameters in `data/gen_data.py` to modify the number of individuals, number of clusters to sample from, the length of the feature vector, and the proportion of observed entries.
 
 Once the data has been generated, run the following command to reproduce Figure 1 of the paper:
 

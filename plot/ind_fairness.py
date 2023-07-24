@@ -18,7 +18,7 @@ k = 10   # Number of nearest neighbors to use in KNN
 train_batch = 128   # Batch size for training MLP
 val_step = 100   # Validation step for training MLP
 etas = [0.01] # Adjust eta used in USVT threshold
-processed_data_filename = 'data/samples/p_2'
+processed_data_filename = 'data/samples/p_1'
 
 ##################################################################################################
 # MAIN
@@ -60,7 +60,7 @@ if __name__ == "__main__":
         knn = KNN.KNN(ratings_ME)
         mses = knn.run_KNN_and_get_results([k])
         A_hat_h = knn.estimate
-        ratios_h = get_IF_ratios(A_hat_h, ratings_ME.train)   # Get IF ratios for h
+        ratios_h = get_IF_ratios(A_hat_h, ratings_ME.train)  
 
         knn.data_matrix.train = usvt_estimate
         mses = knn.run_KNN_and_get_results([k])
@@ -71,7 +71,7 @@ if __name__ == "__main__":
         print("Invalid inference algorithm h. Please choose either 'MLP' or 'KNN'.")
 
     # Plot histogram.
-    x_max = 1.1 * max(ratios_h)
+    x_max = max(ratios_h)
     plt.xlim(0, x_max)
     bin_list = [x_max/50.0 * i for i in range(51)]
     n, bins, patches = plt.hist(ratios_h, bins=bin_list, facecolor='g', label="without SVT pre-processing")
